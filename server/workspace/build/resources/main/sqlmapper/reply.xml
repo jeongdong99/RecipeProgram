@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ReplyMapper">
+    <resultMap id="resultReply" type="persistence.dto.Reply_dto">
+        <result property="reply_num" column="reply_num"/>
+        <result property="post_num" column="post_num"/>
+        <result property="user_name" column="user_name"/>
+        <result property="dateTime" column="dateTime"/>
+        <result property="contents" column="contents"/>
+    </resultMap>
+    <select id="selectAll" resultMap="resultReply">
+        SELECT * FROM REPLY
+    </select>
+    <select id="selectByPostNum" resultMap="resultReply">
+        SELECT * FROM reply WHERE post_num = #{post_num}
+    </select>
+    <insert id="insert" parameterType="persistence.dto.Reply_dto">
+        INSERT INTO POST (reply_num, post_num, user_name, dateTime, contents)
+        VALUES (#{reply_num},#{post_num},#{user_name},now(),#{contents})
+    </insert>
+    <update id="update" parameterType="persistence.dto.Reply_dto">
+        UPDATE REPLY SET
+        user_name = #{user_name},
+        dateTime = #{dateTime},
+        contents = #{contents},
+        WHERE reply_num = #{reply_num}
+    </update>
+    <delete id="delete" parameterType="persistence.dto.Reply_dto">
+        DELETE FROM REPLY WHERE reply_num = #{reply_num}
+    </delete>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.ProductMapper">
+    <resultMap id="resultProduct" type="persistence.dto.Product_dto">
+        <result property="product_id" column="product_id"/>
+        <result property="product_name" column="product_name"/>
+        <result property="product_price" column="product_price"/>
+        <result property="product_url" column="product_url"/>
+        <result property="product_img" column="product_img"/>
+    </resultMap>
+    <select id="selectAll" resultMap="resultProduct">
+        SELECT * FROM product
+    </select>
+    <select id="selectByProductName" resultMap="resultProduct">
+        SELECT * FROM product WHERE product_name like CONCAT('%',#{product_name},'%')
+    </select>
+
+    <select id="selectByCheapProduct" resultMap="resultProduct">
+        SELECT * FROM product WHERE product_name like CONCAT('%',#{product_name},'%') ORDER BY product_price
+    </select>
+
+    <select id="selectByRelatedRecipe" resultMap="resultProduct">
+        SELECT * FROM product WHERE product_name like CONCAT('%',#{recipe_ingredient},'%') limit 2 offset #{offset}
+    </select>
+</mapper>

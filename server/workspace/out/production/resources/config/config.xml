@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias alias="Recipe" type="persistence.dto.Recipe_dto"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!--  connecting to Local MySql -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost/mydb?characterEncoding=utf8&amp;serverTimezone=UTC&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="910su147!A"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="sqlmapper/baek.xml"/>
+        <mapper resource="sqlmapper/cooktool.xml"/>
+        <mapper resource="sqlmapper/ingredient.xml"/>
+        <mapper resource="sqlmapper/post.xml"/>
+        <mapper resource="sqlmapper/product.xml"/>
+        <mapper resource="sqlmapper/recipe.xml"/>
+        <mapper resource="sqlmapper/reply.xml"/>
+        <mapper resource="sqlmapper/user.xml"/>
+    </mappers>
+
+</configuration>

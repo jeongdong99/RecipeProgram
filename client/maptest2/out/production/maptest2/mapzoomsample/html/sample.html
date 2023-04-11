@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>map zoom sample</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          #map-canvas {
+            height: 300px;
+            width: 100%;
+            margin: 0px;
+            padding: 0px
+          }
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk1BkGdwKNeh51eqYwPyarVhzXxGh0WrA&callback=initMap"></script>
+        <script>
+            var map;
+            var arr =[['일등마트', '경상남도 김해시 활천로267번길 31 (삼방동)', 35.24575091, 128.9080996], ['김해터미널쇼핑센터', '경상남도 김해시 김해대로 2232 (외동)', 35.22914478, 128.8721665],
+                ['아이스퀘어몰', '경상남도 김해시 김해대로 2342 (부원동)', '35.22508586', '128.8832757'], ['넥스틸(주) (주)대성철강', '경상남도 김해시 진영읍 서부로 76', 35.28965593, 128.762317],
+                ['롯데쇼핑(주) 롯데마트 김해점', '경상남도 김해시 김해대로 2330 (부원동)', 35.23197292, 128.890107], ['메가마트 김해점', '상남도 김해시 김해대로2492번길 20 (삼정동)', 35.22608186, 128.9003931],
+                ['(주)메가마트 외동점', '경상남도 김해시함박로101번길19(외동,대동한마음타운)', 35.2336204, 128.8642274], ['롯데프리미엄아울렛김해점', '경상남도 김해시 장유로 469 (신문동)', 36.83413931, 126.8639693],
+                ['롯데마트 장유점', '경상남도 김해시 번화1로56번길 15 (대청동)', 35.8924894, 126.8606012], ['자어언트가구프라자', '경상남도 김해시 한림면 김해대로 1591', 35.27527124, 128.8453387],
+                ['홈플러스(주) 김해점', '경상남도 김해시 김해대로 2078 (내동)', 35.24184109, 128.8701958], ['노바가구', '경상남도 김해시 한림면 김해대로1404', 35.27732871, 128.826164],
+                ['어방종합시장', '경상남도 김해시 활천로166번길 9(어방동)', 35.2402948, 128.9010355], ['국제타운상가', '경상남도 김해시 활천로267번길 13 (삼방동)', 35.24402675, 128.9081474],
+                ['백제종합상가', '경상남도 김해시 분성로454번길 9(삼정동 백제삼정데파트 상가)', 35.23415921,128.8961028], ['대동종합상가', '경남 김해시 함박로 101 대동아파트', 35.2336204, 128.8642274],
+                ['호성상가', '경상남도 김해시 활천로 32(삼정동, 호성상가아파트)', 35.23055796, 128.8939411], ['광남백조아파트상가', '경상남도 김해시 가락로 219(구산동)', 35.24531394, 128.8803037],
+                ['대우유토피아상가', '경상남도 김해시 인제로 165(어방동)', 35.24329001, 128.9013506], ['화인상가', '경상남도 김해시 삼안로 258(삼방동)', 35.25177877, 128.9107378],
+                ['한일아파트종합상가', '경상남도 김해시 삼안로 244(삼방동, 한일아파트)', 35.25057813, 128.9103584], ['김해어방동성상가', '경상남도 김해시 삼안로 205(삼방동)', 35.24631949, 128.9107274],
+                ['사단법인김해시장번영회', '경상남도 김해시 구지로180번길 27-10(동상동)', 35.23611506, 128.8834822], ['한국그랜드쇼핑', '경남 김해시 함박로 120 한국아파트 상가', 35.23377219, 128.863056],
+                ['캐슬아리스타궁', '경상남도 김해시 가야로 470(동상동,  캐슬아리스타궁)', 35.23937163, 128.8858229]]
+
+
+            function initialize(){
+                var mapEle = document.getElementById("map-canvas");
+                var latlng = new google.maps.LatLng(35.23, 128.89);
+
+                var mapOption = {
+                    center: latlng,
+                    zoom: 12
+                    };
+                    map = new google.maps.Map(mapEle, mapOption);
+                    google.maps.event.addListener(map, 'zoom_changed', function () {
+                        var zoom = map.getZoom();
+                        // call Java method
+                        app.setZoom(zoom);
+                    });
+                    for(var i = 0; i<arr.length;i++) {
+                        var shoppingmall = new google.maps.LatLng(arr[i][2], arr[i][3]);//마커 찍는 위치
+                        var marker = new google.maps.Marker({
+                            position: shoppingmall,
+                            map: map,
+                            title: arr[i][0],
+                            clickable: true
+                        });
+                        var iwRemoveable = true;
+                        var infowindow = new google.maps.InfoWindow({
+                            content: arr[i][1],
+                            removable :iwRemoveable
+                        })
+
+                        marker.setMap(map);
+                        google.maps.event.addListener(marker, 'click',makeClickListner(map,marker,infowindow));
+                    }
+                    function makeClickListner(map,marker,infowindow){
+                        return function(){
+                            infowindow.open(map,marker);
+                        }
+                    }
+                }
+            // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+
+                // set zoom action
+                function changeZoom(zoom) {
+                    map.setZoom(zoom);
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+    <body>
+        <div id="map-canvas">map here</div>
+    </body>
+</html>

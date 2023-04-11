@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.IngredientMapper">
+    <resultMap id="resultIngredient" type="persistence.dto.Ingredient_dto">
+        <result property="id" column="ingredients_id"/>
+        <result property="recipe_id" column="recipe_id"/>
+        <result property="ingredient_name" column="ingredient_name"/>
+    </resultMap>
+    <select id="selectByTwo" resultMap="resultIngredient" parameterType="persistence.dto.Ingredient_dto">
+        SELECT recipe_id FROM INGREDIENTS WHERE ingredient_name
+        in (#{ing1}, #{ing2}) GROUP BY recipe_id HAVING COUNT(DISTINCT recipe_id) = 2
+    </select>
+    <select id="selectByThree" resultMap="resultIngredient">
+        SELECT recipe_id FROM INGREDIENTS WHERE ingredient_name
+        in(#{ing1},#{ing2},#{ing3}) GROUP BY recipe_id HAVING COUNT(DISTINCT recipe_id) = 3
+    </select>
+    <select id="selectByFour" resultMap="resultIngredient">
+        SELECT recipe_id FROM INGREDIENTS WHERE ingredient_name
+        in(#{ing1},#{ing2},#{ing3},#{ing4}) GROUP BY recipe_id HAVING COUNT(DISTINCT recipe_id) = 4
+    </select>
+    <select id="selectOne" resultMap="resultIngredient">
+        SELECT recipe_id FROM ingredients WHERE ingredient_name = #{ingredient_name}
+    </select>
+    <select id="selectTwo" resultMap="resultIngredient" parameterType="java.util.Map">
+        SELECT recipe_id FROM INGREDIENTS WHERE ingredient_name = #{ingredient_1} or ingredient_name = #{ingredient_2}
+    </select>
+    <select id="selectThree" resultMap="resultIngredient" parameterType="java.util.Map">
+        SELECT recipe_id FROM INGREDIENTS WHERE ingredient_name = #{ingredient_1}
+        or ingredient_name = #{ingredient_2} or ingredient_name = #{ingredient_3}
+    </select>
+</mapper>

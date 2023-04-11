@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RecipeMapper">
+    <resultMap id="resultMapRecipe" type="persistence.dto.Recipe_dto">
+        <result property="recipe_id" column="recipe_id"/>
+        <result property="recipe_name" column="recipe_name"/>
+        <result property="recipe_step" column="recipe_step"/>
+        <result property="recipe_ingredient" column="recipe_ingredient"/>
+        <result property="recipe_time" column="recipe_time"/>
+        <result property="recipe_level" column="recipe_level"/>
+        <result property="recipe_url" column="recipe_url"/>
+    </resultMap>
+    <select id="selectByRecipeName" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_name like CONCAT('%',#{recipe_name},'%') limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeTimeAndLevel" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_time = #{recipe_time} and recipe_level = #{recipe_level} limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeTimeAndIng1" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_time &lt; #{recipe_time} AND recipe_id In
+        (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 1) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeTimeAndIng2" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_time &lt; #{recipe_time} AND recipe_id In
+        (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}, #{ing2}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 2) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeTimeAndIng3" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_time &lt; #{recipe_time} AND recipe_id In
+        (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}, #{ing2}, #{ing3}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 3) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeLevelAndIng1" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} AND recipe_id In
+        (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 1) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeLevelAndIng2" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} AND recipe_id In
+        (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}, #{ing2}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 2) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeLevelAndIng3" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} AND recipe_id In
+        (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}, #{ing2}, #{ing3}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 3) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeAllOption1" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} AND recipe_time &lt; #{recipe_time} AND
+        recipe_id In (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 1) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeAllOption2" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} AND recipe_time &lt; #{recipe_time} AND
+        recipe_id In (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}, #{ing2}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 2) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeAllOption3" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} AND recipe_time &lt; #{recipe_time} AND
+        recipe_id In (SELECT A.recipe_id FROM INGREDIENTS as A WHERE A.ingredient_name in
+        (#{ing1}, #{ing2}, #{ing3}) GROUP BY A.recipe_id HAVING COUNT(DISTINCT A.ingredient_name) = 3) limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeLevel" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level} limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeId" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_id = #{recipe_id} limit 8 offset #{offset};
+    </select>
+    <select id="selectByRecipeTime" parameterType="java.util.HashMap" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_time &lt; #{recipe_time} limit 8 offset #{offset};
+    </select>
+</mapper>

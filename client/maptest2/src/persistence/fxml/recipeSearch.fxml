@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:controller="persistence.control.recipeConditionControl" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btn_search_recipe_title" layoutX="464.0" layoutY="41.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="62.0" text="검색" onAction="#showRecipeSearch"/>
+      <TextField fx:id="recipe_search_txt" layoutX="124.0" layoutY="41.0" prefHeight="33.0" prefWidth="312.0" promptText="검색하고자 하는 레시피 제목을 입력하세요" />
+      <ListView fx:id="listview_recipe_list" layoutX="50.0" layoutY="113.0" prefHeight="250.0" prefWidth="500.0" />
+      <Button fx:id="btn_next_page" layoutX="322.0" layoutY="371.0" mnemonicParsing="false" text="다음" onAction="#nextLevel" />
+      <Button fx:id="btn_prev_page" layoutX="247.0" layoutY="371.0" mnemonicParsing="false" text="이전" onAction="#prevLevel" />
+      <Label fx:id="label_page_num" layoutX="301.0" layoutY="375.0" text="1" />
+      <Label fx:id="recipe_search_label1" layoutX="50.0" layoutY="113.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView"/>
+      <Label fx:id="recipe_search_label2" layoutX="51.0" layoutY="143.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView1"/>
+      <Label fx:id="recipe_search_label3" layoutX="50.0" layoutY="173.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView2"/>
+      <Label fx:id="recipe_search_label4" layoutX="50.0" layoutY="203.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView3"/>
+      <Label fx:id="recipe_search_label5" layoutX="50.0" layoutY="233.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView4"/>
+      <Label fx:id="recipe_search_label6" layoutX="50.0" layoutY="263.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView5"/>
+      <Label fx:id="recipe_search_label7" layoutX="50.0" layoutY="293.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView6"/>
+      <Label fx:id="recipe_search_label8" layoutX="50.0" layoutY="323.0" prefHeight="30.0" prefWidth="500.0" text="Label" onMouseClicked="#showRecipeView7"/>
+   </children>
+</Pane>

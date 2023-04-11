@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="persistence.control.baekViewController">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="831.0" prefWidth="600.0">
+         <children>
+            <WebView fx:id="baekImage" layoutX="179.0" layoutY="14.0" onMouseClicked="#goYoutube" prefHeight="135.0" prefWidth="240.0" />
+            <Label fx:id="label_recipe_name" alignment="CENTER" layoutX="40.0" layoutY="162.0" prefHeight="40.0" prefWidth="520.0" style="-fx-background-color: E0E0E0;" text="레시피 이름" textAlignment="CENTER" wrapText="true" />
+            <ScrollPane layoutX="40.0" layoutY="328.0" prefHeight="180.0" prefWidth="330.0">
+               <content>
+                  <Label fx:id="recipeStep" prefWidth="330.0" text="Label" wrapText="true" />
+               </content>
+            </ScrollPane>
+            <VBox layoutX="378.0" layoutY="328.0" prefHeight="180.0" prefWidth="160.0">
+               <children>
+                  <WebView fx:id="thumbnail" onMouseClicked="#goBaekView" prefHeight="90.0" prefWidth="160.0" />
+                  <WebView fx:id="thumbnail2" onMouseClicked="#goBaekView2" prefHeight="90.0" prefWidth="160.0" />
+               </children>
+            </VBox>
+            <ScrollPane layoutX="40.0" layoutY="216.0" prefHeight="100.0" prefWidth="518.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="522.0">
+                     <children>
+                        <Label fx:id="label_recipe_ings" alignment="CENTER" layoutX="-2.0" prefWidth="523.0" style="-fx-background-color: E0E0E0;" text="재료" wrapText="true">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

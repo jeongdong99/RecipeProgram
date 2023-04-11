@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="persistence.control.productSearchControl">
+   <children>
+      <Button fx:id="btn_search_recipe_title" layoutX="464.0" layoutY="41.0" mnemonicParsing="false" onAction="#showProduct" prefHeight="33.0" prefWidth="62.0" text="검색" />
+      <TextArea fx:id="txt_product_title" layoutX="124.0" layoutY="41.0" prefHeight="33.0" prefWidth="312.0" promptText="식자재 검색창" />
+      <Button fx:id="btn_next_product_page" layoutX="320.0" layoutY="394.0" mnemonicParsing="false" onAction="#nextProductLevel" text="다음" />
+      <Button fx:id="btn_prev_page" layoutX="240.0" layoutY="394.0" mnemonicParsing="false" onAction="#prevProductLevel" text="이전" />
+      <Label fx:id="label_page_product_num" layoutX="296.0" layoutY="398.0" text="1" />
+      <VBox layoutX="60.0" layoutY="90.0" onMouseClicked="#showProductView1" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView1" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name1" text="Label" />
+            <Label fx:id="product_price1" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="440.0" layoutY="90.0" onMouseClicked="#showProductView2" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView4" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name4" text="Label" />
+            <Label fx:id="product_price4" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="185.0" layoutY="90.0" onMouseClicked="#showProductView3" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView2" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name2" text="Label" />
+            <Label fx:id="product_price2" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="310.0" layoutY="90.0" onMouseClicked="#showProductView4" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView3" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name3" text="Label" />
+            <Label fx:id="product_price3" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="60.0" layoutY="230.0" onMouseClicked="#showProductView5" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView5" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name5" text="Label" />
+            <Label fx:id="product_price5" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="185.0" layoutY="230.0" onMouseClicked="#showProductView6" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView6" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name6" text="Label" />
+            <Label fx:id="product_price6" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="310.0" layoutY="230.0" onMouseClicked="#showProductView7" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView7" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name7" text="Label" />
+            <Label fx:id="product_price7" text="Label" />
+         </children>
+      </VBox>
+      <VBox layoutX="440.0" layoutY="230.0" onMouseClicked="#showProductView8" prefHeight="125.0" prefWidth="100.0">
+         <children>
+            <WebView fx:id="product_webView8" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="product_name8" text="Label" />
+            <Label fx:id="product_price8" text="Label" />
+         </children>
+      </VBox>
+   </children>
+</Pane>

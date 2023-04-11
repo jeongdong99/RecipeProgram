@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.PostMapper">
+    <resultMap id="resultPost" type="persistence.dto.Post_dto">
+        <result property="id" column="post_num"/>
+        <result property="user" column="user_num"/>
+        <result property="content" column="contents"/>
+        <result property="title" column="title"/>
+        <result property="time" column="dateTime"/>
+        <result property="region_id" column="region_id"/>
+        <result property="is_deleted" column="is_deleted"/>
+    </resultMap>
+    <select id="selectAll" resultMap="resultPost">
+        SELECT * FROM POST
+    </select>
+    <select id="selectByRegion" resultMap="resultPost">
+        SELECT * FROM POST WHERE region_id = #{region_id}
+    </select>
+    <select id="selectByUser" resultMap="resultPost">
+        SELECT * FROM POST WHERE user_num = #{user_num}
+    </select>
+    <select id="selectByTitle" resultMap="resultPost">
+        SELECT * FROM POST WHERE title LIKE '%title%'
+    </select>
+    <insert id = "insertPost"
+            parameterType="persistence.dto.Post_dto">
+        INSERT INTO POST (post_num, user_num, contents, title, dateTime, region_id, is_deleted)
+        VALUES (#{post_num},#{user_num},#{contents},#{title},now(),#{region_id},#{is_deleted})
+    </insert>
+    <update id="updatePost" parameterType="persistence.dto.Post_dto">
+        UPDATE POST SET
+        contents = #{contents},
+        title = #{title},
+        dateTime = now(),
+        region_id = #{region_id}
+        WHERE post_num = #{post_num}
+    </update>
+    <delete id = "deletePost"
+            parameterType="persistence.dto.Post_dto">
+        DELETE FROM POST WHERE post_num = #{post_num}
+    </delete>
+
+</mapper>

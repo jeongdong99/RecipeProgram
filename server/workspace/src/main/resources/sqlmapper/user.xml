@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+    <resultMap id="resultUser" type="persistence.dto.User_dto">
+        <result property="user_num" column="user_num"/>
+        <result property="user_id" column="user_id"/>
+        <result property="user_password" column="user_password"/>
+        <result property="user_name" column="user_name"/>
+        <result property="user_phone" column="user_phone"/>
+    </resultMap>
+    <resultMap id="resultUserNum" type="Integer">
+        <result property="user_num" column="user_num"/>
+    </resultMap>
+
+    <select id="login" resultType="boolean" parameterType="persistence.dto.User_dto">
+        SELECT EXISTS ( SELECT * FROM user WHERE user_id = #{user_id} AND user_password = #{user_password} )
+    </select>
+
+    <select id="selectAll" resultMap="resultUser">
+        SELECT * FROM user
+    </select>
+    <select id="selectByUserName" resultMap="resultUser">
+        SELECT * FROM user WHERE user_name = #{user_name}
+    </select>
+    <select id="selectByUserNum" resultMap="resultUser">
+        SELECT * FROM user WHERE user_num = #{user_num}
+    </select>
+
+    <insert id="insert" parameterType="persistence.dto.User_dto">
+        INSERT INTO USER (user_id, user_password, user_name, user_phone)
+        VALUES (#{user_id}, #{user_password}, #{user_name}, #{user_phone})
+    </insert>
+</mapper>

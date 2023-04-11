@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.RecipeMapper">
+    <resultMap id="resultMapRecipe" type="persistence.dto.Recipe_dto">
+        <result property="recipe_id" column="recipe_id"/>
+        <result property="recipe_name" column="recipe_name"/>
+        <result property="recipe_step" column="recipe_step"/>
+        <result property="recipe_ingredient" column="recipe_ingredient"/>
+        <result property="recipe_time" column="recipe_time"/>
+        <result property="recipe_level" column="recipe_level"/>
+        <result property="recipe_url" column="recipe_url"/>
+    </resultMap>
+    <select id="selectByRecipeName" parameterType="persistence.dto.Recipe_dto" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_name like #{recipe_name}
+    </select>
+    <select id="selectByRecipeLevel" parameterType="persistence.dto.Recipe_dto" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_level = #{recipe_level}
+    </select>
+    <select id="selectByRecipeId" parameterType="persistence.dto.Recipe_dto" resultMap="resultMapRecipe">
+        SELECT * FROM recipe WHERE recipe_id = #{recipe_id}
+    </select>
+</mapper>

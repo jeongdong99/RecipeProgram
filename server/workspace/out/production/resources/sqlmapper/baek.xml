@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.BaekMapper">
+    <resultMap id="resultBaek" type="persistence.dto.Baek_dto">
+        <result property="baek_id" column="baek_id"/>
+        <result property="baek_title" column="baek_title"/>
+        <result property="baek_recipe" column="baek_recipe"/>
+        <result property="baek_ingredient" column="baek_ingredient"/>
+        <result property="image_url" column="image_url"/>
+        <result property="video_url" column="video_url"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="resultBaek">
+        SELECT * FROM baek
+    </select>
+    <select id="selectByBaekTitle" resultMap="resultBaek">
+        SELECT * FROM baek WHERE baek_title like CONCAT('%',#{baek_title},'%') limit 2 offset #{offset}
+    </select>
+</mapper>

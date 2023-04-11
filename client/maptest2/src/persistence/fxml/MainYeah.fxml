@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="persistence.control.mainViewControl">
+   <children>
+      <TabPane prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMinHeight="50.0" tabMinWidth="50.0">
+        <tabs>
+            <Tab text="마트위치">
+               <content>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="27.0" layoutY="45.0" mnemonicParsing="false" onAction="#showMart" prefHeight="92.0" prefWidth="179.0" text="김해 마트위치 보기" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab text="레시피검색">
+               <content>
+                  <Pane fx:id="pnlMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0">
+                     <children>
+                        <TextArea fx:id="recipe_search_txt" layoutX="116.0" layoutY="36.0" prefHeight="36.0" prefWidth="332.0" promptText="레시피 이름을 입력해주세요" />
+                        <Accordion layoutX="8.0" layoutY="140.0" prefHeight="236.0" prefWidth="579.0">
+                           <panes>
+                              <TitledPane animated="false" text="재료">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="198.0" prefWidth="577.0">
+                                       <children>
+                                          <ScrollPane prefHeight="169.0" prefWidth="579.0">
+                                             <content>
+                                                <AnchorPane fx:id="anchorPaneCheckBoxes" minHeight="0.0" minWidth="0.0" prefHeight="215.0" prefWidth="562.0">
+                                                   <children>
+                                                      <CheckBox fx:id="beef" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" text="소고기" />
+                                                      <CheckBox fx:id="pork" layoutX="154.0" layoutY="14.0" mnemonicParsing="false" text="돼지고기" />
+                                                      <CheckBox fx:id="chicken" layoutX="253.0" layoutY="14.0" mnemonicParsing="false" text="닭고기" />
+                                                      <CheckBox fx:id="duck" layoutX="353.0" layoutY="14.0" mnemonicParsing="false" text="오리고기" />
+                                                      <CheckBox fx:id="potato" layoutX="455.0" layoutY="14.0" mnemonicParsing="false" text="감자" />
+                                                      <CheckBox fx:id="onion" layoutX="54.0" layoutY="53.0" mnemonicParsing="false" text="양파/대파" />
+                                                      <CheckBox fx:id="garlic" layoutX="154.0" layoutY="53.0" mnemonicParsing="false" text="마늘" />
+                                                      <CheckBox fx:id="beanSprouts" layoutX="227.0" layoutY="53.0" mnemonicParsing="false" text="콩나물/숙주나물" />
+                                                      <CheckBox fx:id="shrimp" layoutX="353.0" layoutY="53.0" mnemonicParsing="false" text="새우" />
+                                                      <CheckBox fx:id="pepper" layoutX="455.0" layoutY="53.0" mnemonicParsing="false" text="고추" />
+                                                      <CheckBox fx:id="calm" layoutX="54.0" layoutY="91.0" mnemonicParsing="false" text="어패류" />
+                                                      <CheckBox fx:id="fish" layoutX="154.0" layoutY="90.0" mnemonicParsing="false" text="생선류" />
+                                                      <CheckBox fx:id="tuna" layoutX="253.0" layoutY="90.0" mnemonicParsing="false" text="참치" />
+                                                      <CheckBox fx:id="kimchi" layoutX="353.0" layoutY="90.0" mnemonicParsing="false" text="김치" />
+                                                      <CheckBox fx:id="tofu" layoutX="455.0" layoutY="90.0" mnemonicParsing="false" text="두부" />
+                                                      <CheckBox fx:id="egg" layoutX="54.0" layoutY="124.0" mnemonicParsing="false" text="계란" />
+                                                      <CheckBox fx:id="milk" layoutX="154.0" layoutY="123.0" mnemonicParsing="false" text="유제품" />
+                                                      <CheckBox fx:id="cheese" layoutX="254.0" layoutY="124.0" mnemonicParsing="false" text="치즈" />
+                                                      <CheckBox fx:id="crab" layoutX="353.0" layoutY="124.0" mnemonicParsing="false" text="꽃게" />
+                                                      <CheckBox fx:id="mushroom" layoutX="455.0" layoutY="123.0" mnemonicParsing="false" text="버섯" />
+                                                      <CheckBox fx:id="noodle" layoutX="54.0" layoutY="157.0" mnemonicParsing="false" text="면류" />
+                                                      <CheckBox fx:id="squid" layoutX="154.0" layoutY="157.0" mnemonicParsing="false" text="오징어" />
+                                                      <CheckBox fx:id="cabbage" layoutX="254.0" layoutY="157.0" mnemonicParsing="false" text="배추" />
+                                                      <CheckBox fx:id="vegetable" layoutX="352.0" layoutY="157.0" mnemonicParsing="false" text="채소류" />
+                                                      <CheckBox fx:id="fruit" layoutX="455.0" layoutY="156.0" mnemonicParsing="false" text="과일" />
+                                                      <CheckBox fx:id="dumpling" layoutX="54.0" layoutY="190.0" mnemonicParsing="false" text="만두" />
+                                                      <CheckBox fx:id="can" layoutX="154.0" layoutY="190.0" mnemonicParsing="false" text="통조림" />
+                                                      <CheckBox fx:id="peanut" layoutX="254.0" layoutY="190.0" mnemonicParsing="false" text="견과류" />
+                                                      <CheckBox fx:id="oil" layoutX="352.0" layoutY="190.0" mnemonicParsing="false" text="기름/오일" />
+                                                      <CheckBox fx:id="bread" layoutX="455.0" layoutY="190.0" mnemonicParsing="false" text="빵" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </ScrollPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane animated="false" prefHeight="178.0" prefWidth="579.0" text="시간 별">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="recipeTime1" layoutX="60.0" layoutY="73.0" mnemonicParsing="false" text="15분 이내">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="recipeTime2" layoutX="440.0" layoutY="73.0" mnemonicParsing="false" text="60분">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="recipeTime3" layoutX="308.0" layoutY="73.0" mnemonicParsing="false" text="30분">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="recipeTime4" layoutX="192.0" layoutY="73.0" mnemonicParsing="false" text="20분">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </TitledPane>
+                              <TitledPane animated="false" text="난이도">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <CheckBox fx:id="level_easy" layoutX="60.0" layoutY="67.0" mnemonicParsing="false" text="개나소나">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="level_hard" layoutX="440.0" layoutY="67.0" mnemonicParsing="false" text="고든렘지">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="level_middle" layoutX="320.0" layoutY="67.0" mnemonicParsing="false" text="중급">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox fx:id="level_begin" layoutX="200.0" layoutY="67.0" mnemonicParsing="false" text="초급">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </TitledPane>
+                           </panes>
+                        </Accordion>
+                        <Button fx:id="btn_recipe_search" layoutX="463.0" layoutY="35.0" mnemonicParsing="false" onAction="#showRecipeSearch" prefHeight="38.0" prefWidth="57.0" text="검색" />
+                        <Text layoutX="52.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="레시피">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btn_search_condtion" layoutX="250.0" layoutY="368.0" mnemonicParsing="false" onAction="#searchRecipeByConditions" prefHeight="45.0" prefWidth="95.0" text="조건 검색" />
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+          <Tab onSelectionChanged="#baek" text="백종원">
+               <content>
+                  <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0">
+                     <content>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                           <children>
+                              <TextArea fx:id="baek_search_txt" layoutX="124.0" layoutY="41.0" prefHeight="33.0" prefWidth="312.0" promptText="검색하고자 하는 레시피 제목을 입력하세요" />
+                              <Button fx:id="btn_search_recipe_title" layoutX="464.0" layoutY="41.0" mnemonicParsing="false" onAction="#showBaekSearch" prefHeight="33.0" prefWidth="62.0" text="검색" />
+                              <Button fx:id="btn_next_baek_page" layoutX="320.0" layoutY="370.0" mnemonicParsing="false" onAction="#nextBaekLevel" text="다음" />
+                              <Button fx:id="btn_prev_baek_page" layoutX="247.0" layoutY="371.0" mnemonicParsing="false" onAction="#prevBaekLevel" text="이전" />
+                              <Label fx:id="label_page_baek_num" layoutX="301.0" layoutY="375.0" text="1" />
+                              <VBox layoutX="53.0" layoutY="133.0" prefHeight="180.0" prefWidth="500.0">
+                                 <children>
+                                    <HBox onMouseClicked="#showBaekView" prefHeight="90.0" prefWidth="500.0">
+                                       <children>
+                                          <WebView fx:id="BaekImage1" prefHeight="90.0" prefWidth="160.0" />
+                                          <Label fx:id="BaekTitle1" prefHeight="90.0" prefWidth="350.0" text="음식 제목1" wrapText="true">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox onMouseClicked="#showBaekView2" prefHeight="90.0" prefWidth="500.0">
+                                       <children>
+                                          <WebView fx:id="BaekImage2" prefHeight="90.0" prefWidth="160.0" />
+                                          <Label fx:id="BaekTitle2" prefHeight="90.0" prefWidth="350.0" text="음식제목2" wrapText="true">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+               </content>
+            </Tab>
+           <Tab onSelectionChanged="#product" text="식자제검색">
+               <content>
+                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="444.0" prefWidth="600.0">
+                     <children>
+                        <Button id="btn_search_recipe_title" layoutX="464.0" layoutY="41.0" mnemonicParsing="false" onAction="#showProduct" prefHeight="33.0" prefWidth="62.0" text="검색" />
+                        <TextArea fx:id="product_search_txt" layoutX="124.0" layoutY="41.0" prefHeight="33.0" prefWidth="312.0" promptText="식자재 검색창" />
+                        <Button fx:id="btn_next_product_page" layoutX="320.0" layoutY="394.0" mnemonicParsing="false" onAction="#nextProductLevel" text="다음" />
+                        <Button fx:id="btn_prev_product_page" layoutX="240.0" layoutY="394.0" mnemonicParsing="false" onAction="#prevProductLevel" text="이전" />
+                        <Label fx:id="label_page_product_num" layoutX="296.0" layoutY="398.0" text="1" />
+                        <VBox layoutX="60.0" layoutY="90.0" onMouseClicked="#showProductView1" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage1" prefHeight="200.0" prefWidth="200.0"/>
+                              <Label fx:id="productName1" text="Label" />
+                              <Label fx:id="productPrice1" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="440.0" layoutY="90.0" onMouseClicked="#showProductView2" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage2" prefHeight="200.0" prefWidth="200.0"/>
+                              <Label fx:id="productName2" text="Label" />
+                              <Label fx:id="productPrice2" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="185.0" layoutY="90.0" onMouseClicked="#showProductView3" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage3" prefHeight="200.0" prefWidth="200.0" />
+                              <Label fx:id="productName3" text="Label" />
+                              <Label fx:id="productPrice3" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="310.0" layoutY="90.0" onMouseClicked="#showProductView4" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage4" prefHeight="200.0" prefWidth="200.0" />
+                              <Label fx:id="productName4" text="Label" />
+                              <Label fx:id="productPrice4" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="60.0" layoutY="230.0" onMouseClicked="#showProductView5" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage5" prefHeight="200.0" prefWidth="200.0" />
+                              <Label fx:id="productName5" text="Label" />
+                              <Label fx:id="productPrice5" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="185.0" layoutY="230.0" onMouseClicked="#showProductView6" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage6" prefHeight="200.0" prefWidth="200.0" />
+                              <Label fx:id="productName6" text="Label" />
+                              <Label fx:id="productPrice6" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="310.0" layoutY="230.0" onMouseClicked="#showProductView7" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage7" prefHeight="200.0" prefWidth="200.0" />
+                              <Label fx:id="productName7" text="Label" />
+                              <Label fx:id="productPrice7" text="Label" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="440.0" layoutY="230.0" onMouseClicked="#showProductView8" prefHeight="125.0" prefWidth="100.0">
+                           <children>
+                              <WebView fx:id="productImage8" prefHeight="200.0" prefWidth="200.0" />
+                              <Label fx:id="productName8" text="Label" />
+                              <Label fx:id="productPrice8" text="Label" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

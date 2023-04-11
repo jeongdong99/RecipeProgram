@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="persistence.control.recipeViewControl">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="600.0">
+         <children>
+            <Label fx:id="recipe_name" alignment="CENTER" layoutX="40.0" layoutY="41.0" prefHeight="40.0" prefWidth="520.0" style="-fx-background-color: E0E0E0;" text="레시피 이름" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="recipe_time" alignment="CENTER" layoutX="140.0" layoutY="120.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: E0E0E0;" text="시간" wrapText="true" AnchorPane.leftAnchor="140.0" />
+            <Label fx:id="recipe_level" alignment="CENTER" layoutX="363.0" layoutY="120.0" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: E0E0E0;" text="난이도" wrapText="true" AnchorPane.rightAnchor="140.0" />
+            <Label fx:id="recipe_ingredients" alignment="CENTER" layoutX="40.0" layoutY="161.0" prefHeight="59.0" prefWidth="520.0" style="-fx-background-color: E0E0E0;" text="재료" wrapText="true">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <ScrollPane layoutX="40.0" layoutY="255.0" prefHeight="300.0" prefWidth="349.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="334.0">
+                     <children>
+                        <Label fx:id="recipe_step" alignment="TOP_LEFT" layoutY="6.0" prefWidth="333.0" text="레시피" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <VBox layoutX="410.0" layoutY="255.0" prefHeight="383.0" prefWidth="149.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" onMouseClicked="#showProductURL1">
+                     <children>
+                        <WebView fx:id="product_webView1" prefHeight="130.0" prefWidth="149.0" />
+                        <Label fx:id="product_name1" prefHeight="30.0" prefWidth="149.0" text="제품명" />
+                        <Label fx:id="product_price1" prefHeight="30.0" prefWidth="149.0" text="가격" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" onMouseClicked="#showProductURL2">
+                     <children>
+                        <WebView fx:id="product_webView2" prefHeight="130.0" prefWidth="149.0" />
+                        <Label fx:id="product_name2" prefHeight="30.0" prefWidth="149.0" text="제품명" />
+                        <Label fx:id="product_price2" prefHeight="30.0" prefWidth="149.0" text="가격" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <HBox layoutX="32.0" layoutY="574.0" prefHeight="127.0" prefWidth="371.0">
+               <children>
+                  <VBox prefHeight="100.0" prefWidth="189.0" onMouseClicked="#showCooktoolURL1">
+                     <children>
+                        <WebView fx:id="cooktool_webView1" prefHeight="200.0" prefWidth="200.0" />
+                        <Label fx:id="cooktool_name1" text="제품명" />
+                        <Label fx:id="cooktool_price1" layoutX="10.0" layoutY="122.0" text="가격" />
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="189.0" onMouseClicked="#showCooktoolURL2">
+                     <children>
+                        <WebView fx:id="cooktool_webView2" prefHeight="200.0" prefWidth="200.0" />
+                        <Label fx:id="cooktool_name2" text="제품명" />
+                        <Label fx:id="cooktool_price2" layoutX="10.0" layoutY="122.0" text="가격" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
